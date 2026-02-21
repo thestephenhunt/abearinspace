@@ -1,11 +1,57 @@
-/* CSS is how you can add style to your website, such as colors, fonts, and positioning of your
-   HTML content. To learn how to do something, just try searching Google for questions like
-   "how to change link color." */
+:root {
+    font-size: clamp(18px, 1.75vw, 22px);
+}
 
 body {
-  background-color: black;
-  color: white;
-  font-family: sans-serif;
-  display: grid;
-  justify-content: center;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: black;
+    background-image:
+        radial-gradient(white, rgba(255, 255, 255, 0.2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
+        radial-gradient(
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0.1) 2px,
+            transparent 30px
+        );
+    background-size:
+        550px 550px,
+        350px 350px,
+        250px 250px,
+        150px 150px;
+    background-position:
+        0 0,
+        40px 60px,
+        130px 270px,
+        70px 100px;
+}
+
+main {
+    max-width: 80ch;
+
+    blockquote {
+        border-left: 2px solid #333;
+        margin: 1rem 0;
+        padding-left: 1rem;
+        font-style: italic;
+    }
+}
+
+footer {
+    opacity: 0.8;
+
+    a {
+        opacity: 1;
+        color: white;
+        text-decoration: #999 wavy underline;
+
+        &:hover {
+            text-decoration-color: mediumpurple;
+        }
+    }
 }

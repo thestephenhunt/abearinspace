@@ -1,34 +1,369 @@
 :root {
     font-size: clamp(18px, 1.75vw, 22px);
+    --ray1-start: 45% 45%;
+    --ray1-end: 10% 0;
+    --star-color-near: white;
+    --star-color-far: rgba(255, 255, 255, 0.7);
+}
+
+@property --near-alpha {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+}
+@property --far-alpha {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+}
+
+/* ---------- Base page ---------- */
+
+html {
+    background: black;
 }
 
 body {
-    color: white;
-    font-family: sans-serif;
+    position: relative;
+    margin: 0;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    font-family: system-ui, sans-serif;
+    color: #fff;
+    overflow: hidden;
 
-    background-color: black;
-    background-image:
-        radial-gradient(white, rgba(255, 255, 255, 0.2) 2px, transparent 40px),
-        radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 30px),
-        radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
+    /* Denser static background stars */
+    background:
         radial-gradient(
-            rgba(255, 255, 255, 0.4),
-            rgba(255, 255, 255, 0.1) 2px,
-            transparent 30px
+            circle,
+            rgba(255, 255, 255, 0.16) 0,
+            rgba(255, 255, 255, 0.16) 1px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.12) 0,
+            rgba(255, 255, 255, 0.12) 1px,
+            transparent 5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.08) 0,
+            rgba(255, 255, 255, 0.08) 1px,
+            transparent 6px
         );
     background-size:
-        550px 550px,
-        350px 350px,
         250px 250px,
-        150px 150px;
+        400px 400px,
+        650px 650px;
     background-position:
         0 0,
-        40px 60px,
-        130px 270px,
-        70px 100px;
+        200px 100px,
+        -150px -80px;
+}
+
+/* ---------- Near layer motion ---------- */
+
+@keyframes starfield-near {
+    0% {
+        background-position:
+      /* wave A: 6 rays */
+            51% 49%,
+            49% 47%,
+            47% 50%,
+            53% 52%,
+            50% 53%,
+            55% 49%,
+            /* wave B: 6 rays */ 52% 48%,
+            48% 52%,
+            54% 51%,
+            46% 49%,
+            51% 53%,
+            49% 47%;
+    }
+    100% {
+        background-position:
+      /* wave A ends */
+            150% -20%,
+            -25% 15%,
+            -40% 120%,
+            120% 185%,
+            35% 190%,
+            190% 40%,
+            /* wave B ends */ 170% 0%,
+            -40% 25%,
+            -60% 140%,
+            130% 195%,
+            45% 180%,
+            180% 80%;
+    }
+}
+
+@keyframes starfade-near {
+    0% {
+        --near-alpha: 0;
+    }
+    15% {
+        --near-alpha: 0.8;
+    }
+    65% {
+        --near-alpha: 1;
+    }
+    100% {
+        --near-alpha: 0;
+    }
+}
+
+/* ---------- Far layer motion ---------- */
+
+@keyframes starfield-far {
+    0% {
+        background-position:
+      /* wave A: 5 rays */
+            50% 50%,
+            52% 48%,
+            48% 52%,
+            54% 51%,
+            46% 49%,
+            /* wave B: 5 rays */ 51% 53%,
+            49% 47%,
+            53% 49%,
+            47% 51%,
+            55% 50%;
+    }
+    100% {
+        background-position:
+      /* wave A ends */
+            120% -10%,
+            -20% 20%,
+            -35% 125%,
+            125% 145%,
+            18% 160%,
+            /* wave B ends */ 140% 10%,
+            -15% 30%,
+            -45% 135%,
+            120% 165%,
+            30% 150%;
+    }
+}
+
+@keyframes starfade-far {
+    0% {
+        --far-alpha: 0;
+    }
+    18% {
+        --far-alpha: 0.5;
+    }
+    85% {
+        --far-alpha: 0.65;
+    }
+    100% {
+        --far-alpha: 0;
+    }
+}
+
+/* ---------- Near stars (::before) ---------- */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    --near-alpha: 0;
+
+    background:
+    /* 12 near stars total */
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--near-alpha)) 0,
+            rgba(255, 255, 255, var(--near-alpha)) 2px,
+            transparent 4px
+        );
+
+    background-size: 200% 200%;
+    background-position:
+        51% 49%,
+        49% 47%,
+        47% 50%,
+        53% 52%,
+        50% 53%,
+        55% 49%,
+        52% 48%,
+        48% 52%,
+        54% 51%,
+        46% 49%,
+        51% 53%,
+        49% 47%;
+
+    animation:
+        starfield-near 18.3s linear infinite,
+        starfade-near 14.3s linear infinite;
+    animation-delay:
+        -6.3s,
+        -2.3s;
+}
+
+/* ---------- Far stars (::after) ---------- */
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    --far-alpha: 0;
+
+    background:
+    /* 10 far stars total */
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--far-alpha)) 0,
+            rgba(255, 255, 255, var(--far-alpha)) 1.5px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--far-alpha)) 0,
+            rgba(255, 255, 255, var(--far-alpha)) 1.5px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--far-alpha)) 0,
+            rgba(255, 255, 255, var(--far-alpha)) 1.5px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--far-alpha)) 0,
+            rgba(255, 255, 255, var(--far-alpha)) 1.5px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--far-alpha)) 0,
+            rgba(255, 255, 255, var(--far-alpha)) 1.5px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--far-alpha)) 0,
+            rgba(255, 255, 255, var(--far-alpha)) 1.5px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--far-alpha)) 0,
+            rgba(255, 255, 255, var(--far-alpha)) 1.5px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--far-alpha)) 0,
+            rgba(255, 255, 255, var(--far-alpha)) 1.5px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--far-alpha)) 0,
+            rgba(255, 255, 255, var(--far-alpha)) 1.5px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, var(--far-alpha)) 0,
+            rgba(255, 255, 255, var(--far-alpha)) 1.5px,
+            transparent 3px
+        );
+
+    background-size: 200% 200%;
+    background-position:
+        50% 50%,
+        52% 48%,
+        48% 52%,
+        54% 51%,
+        46% 49%,
+        51% 53%,
+        49% 47%,
+        53% 49%,
+        47% 51%,
+        55% 50%;
+
+    animation:
+        starfield-far 35.6s linear infinite,
+        starfade-far 25.6s linear infinite;
+    animation-delay:
+        -7.1s,
+        -4.1s;
 }
 
 main {

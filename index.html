@@ -7,19 +7,62 @@
         <link href="/style.css" rel="stylesheet" type="text/css" media="all" />
     </head>
     <body>
+        <div class="starfield" aria-hidden="true">
+            <span></span><span></span><span></span><span></span> <span></span
+            ><span></span><span></span><span></span> <span></span><span></span
+            ><span></span><span></span> <span></span><span></span>
+        </div>
         <h1>A Bear in Space</h1>
         <main>
-            <blockquote>"There's great value in just starting"</blockquote>
-            <p>
-                A friend once told me this. I've found this useful through life.
-                Sometimes the most difficult part is just the energy to begin.
-                This is step 1.
-            </p>
+            <article>
+                <h4>Well, this took a bit.</h4>
+                <p>
+                    I really wanted to make the background a starfield. I knew
+                    this <em>could</em> be done in plain HTML and CSS. And I
+                    tend to be a minimalist, and love CSS.
+                </p>
+                <p>
+                    I initially made a bunch of radial-gradients in the
+                    background of the body. Background position for each. Then I
+                    made a ::before pseudo element on the body. This was for
+                    animated stars. This issue that came along was getting
+                    individual stars to animate. It kept just looking like a
+                    starburst from the middle of the page.
+                </p>
+                <p>
+                    Not the effect I was going for. I tried messing with opacity
+                    fading during the animation so stars would fade in and out,
+                    but since the whole background follows the same animation
+                    cycle, that didn't work.
+                </p>
+                <p>
+                    After a bunch of tweaks and reviewing MDN, I bit the bullet
+                    and added some aria-hidden spans. Full admission, I did have
+                    AI help come up with a random distribution for placing all
+                    the static stars in the background. But the rest is built by
+                    hand.
+                </p>
+                <p>
+                    Which leads me to a final point. With this project, I want
+                    to hand build it. I miss the joy of coding and debugging
+                    with nothing but you, the browser, and code...with a splash
+                    of MDN docs.
+                </p>
+                <p>Thanks for stopping by.</p>
+            </article>
+            <article>
+                <blockquote>"There's great value in just starting"</blockquote>
+                <p>
+                    A friend once told me this. I've found this useful through
+                    life. Sometimes the most difficult part is just the energy
+                    to begin. This is step 1.
+                </p>
+            </article>
         </main>
         <footer>
             <p>
-                Background credit: <a href="https://verou.me/">Lea Verou</a>.
-                Check out her work!
+                Background inspired by:
+                <a href="https://verou.me/">Lea Verou</a>. Check out her work!
             </p>
         </footer>
     </body>

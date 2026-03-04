@@ -1,0 +1,184 @@
+/* ---------- Moving stars ---------- */
+
+.starfield {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.starfield span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: white;
+    border-radius: 50%;
+}
+
+/* Star 1 — near, upper-right */
+.starfield span:nth-child(1) {
+    width: 3px; height: 3px;
+    animation: fly-1 19s linear 0s infinite;
+}
+@keyframes fly-1 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.9; }
+    25%           { transform: translate(36.8vw, -33.6vh) scale(1); opacity: 0.9; }
+    32%           { transform: translate(46vw, -42vh) scale(1); opacity: 0; }
+}
+
+/* Star 2 — near, left */
+.starfield span:nth-child(2) {
+    width: 2.5px; height: 2.5px;
+    animation: fly-2 21s linear -2.5s infinite;
+}
+@keyframes fly-2 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.8; }
+    25%           { transform: translate(-40vw, -9.6vh) scale(1); opacity: 0.8; }
+    32%           { transform: translate(-50vw, -12vh) scale(1); opacity: 0; }
+}
+
+/* Star 3 — near, lower-right */
+.starfield span:nth-child(3) {
+    width: 3px; height: 3px;
+    animation: fly-3 18s linear -5s infinite;
+}
+@keyframes fly-3 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.85; }
+    25%           { transform: translate(30.4vw, 36.8vh) scale(1); opacity: 0.85; }
+    32%           { transform: translate(38vw, 46vh) scale(1); opacity: 0; }
+}
+
+/* Star 4 — far, upper-left */
+.starfield span:nth-child(4) {
+    width: 2px; height: 2px;
+    animation: fly-4 22s linear -8s infinite;
+}
+@keyframes fly-4 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.7; }
+    25%           { transform: translate(-28.8vw, -35.2vh) scale(1); opacity: 0.7; }
+    32%           { transform: translate(-36vw, -44vh) scale(1); opacity: 0; }
+}
+
+/* Star 5 — far, right */
+.starfield span:nth-child(5) {
+    width: 2px; height: 2px;
+    animation: fly-5 25s linear -3s infinite;
+}
+@keyframes fly-5 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.55; }
+    25%           { transform: translate(38.4vw, 11.2vh) scale(1); opacity: 0.55; }
+    32%           { transform: translate(48vw, 14vh) scale(1); opacity: 0; }
+}
+
+/* Star 6 — far, lower-left */
+.starfield span:nth-child(6) {
+    width: 1.5px; height: 1.5px;
+    animation: fly-6 27s linear -7s infinite;
+}
+@keyframes fly-6 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.5; }
+    25%           { transform: translate(-35.2vw, 32vh) scale(1); opacity: 0.5; }
+    32%           { transform: translate(-44vw, 40vh) scale(1); opacity: 0; }
+}
+
+/* Star 7 — far, top */
+.starfield span:nth-child(7) {
+    width: 2px; height: 2px;
+    animation: fly-7 24s linear -11s infinite;
+}
+@keyframes fly-7 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.6; }
+    25%           { transform: translate(9.6vw, -38.4vh) scale(1); opacity: 0.6; }
+    32%           { transform: translate(12vw, -48vh) scale(1); opacity: 0; }
+}
+
+/* Star 8 — far, bottom */
+.starfield span:nth-child(8) {
+    width: 1.5px; height: 1.5px;
+    animation: fly-8 26s linear -14s infinite;
+}
+@keyframes fly-8 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.45; }
+    25%           { transform: translate(-14.4vw, 37.6vh) scale(1); opacity: 0.45; }
+    32%           { transform: translate(-18vw, 47vh) scale(1); opacity: 0; }
+}
+
+/* Star 9 — near, upper-left */
+.starfield span:nth-child(9) {
+    width: 2.5px; height: 2.5px;
+    animation: fly-9 20s linear -6s infinite;
+}
+@keyframes fly-9 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.75; }
+    25%           { transform: translate(-38.4vw, -20vh) scale(1); opacity: 0.75; }
+    32%           { transform: translate(-48vw, -25vh) scale(1); opacity: 0; }
+}
+
+/* Star 10 — far, upper-right */
+.starfield span:nth-child(10) {
+    width: 1.5px; height: 1.5px;
+    animation: fly-10 28s linear -16s infinite;
+}
+@keyframes fly-10 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.5; }
+    25%           { transform: translate(24vw, -36.8vh) scale(1); opacity: 0.5; }
+    32%           { transform: translate(30vw, -46vh) scale(1); opacity: 0; }
+}
+
+/* Star 11 — near, lower-right */
+.starfield span:nth-child(11) {
+    width: 2.5px; height: 2.5px;
+    animation: fly-11 22s linear -9s infinite;
+}
+@keyframes fly-11 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.8; }
+    25%           { transform: translate(33.6vw, 24vh) scale(1); opacity: 0.8; }
+    32%           { transform: translate(42vw, 30vh) scale(1); opacity: 0; }
+}
+
+/* Star 12 — far, straight down */
+.starfield span:nth-child(12) {
+    width: 2px; height: 2px;
+    animation: fly-12 31s linear -18s infinite;
+}
+@keyframes fly-12 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.55; }
+    25%           { transform: translate(-6.4vw, 38.4vh) scale(1); opacity: 0.55; }
+    32%           { transform: translate(-8vw, 48vh) scale(1); opacity: 0; }
+}
+
+/* Star 13 — near, upper-left diagonal */
+.starfield span:nth-child(13) {
+    width: 3px; height: 3px;
+    animation: fly-13 25s linear -13s infinite;
+}
+@keyframes fly-13 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.75; }
+    25%           { transform: translate(-17.6vw, -36.8vh) scale(1); opacity: 0.75; }
+    32%           { transform: translate(-22vw, -46vh) scale(1); opacity: 0; }
+}
+
+/* Star 14 — far, left-down */
+.starfield span:nth-child(14) {
+    width: 1.5px; height: 1.5px;
+    animation: fly-14 34s linear -21s infinite;
+}
+@keyframes fly-14 {
+    0%, 33%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    3%            { transform: translate(0, 0) scale(0.4); opacity: 0.45; }
+    25%           { transform: translate(-36.8vw, 16vh) scale(1); opacity: 0.45; }
+    32%           { transform: translate(-46vw, 20vh) scale(1); opacity: 0; }
+}
